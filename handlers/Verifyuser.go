@@ -9,8 +9,10 @@ import (
 )
 
 func (h handler) Verifyuser(c *gin.Context) {
-	uname := c.PostForm("uname")
-	pwd := c.PostForm("pwd")
+	var userData models.Saverequest
+	c.BindJSON(&userData)
+	uname := userData.Username
+	pwd := userData.Password
 
 	var user models.Usercreds
 	result := h.DB.Where("username =?", uname).First(&user)

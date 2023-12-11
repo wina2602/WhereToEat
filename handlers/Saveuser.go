@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"fmt"
 	errormsg "where_to_eat/Messages"
 	"where_to_eat/models"
 	"where_to_eat/utils"
@@ -10,12 +9,11 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
-func Test() {
-	fmt.Println("dfkjvndfj")
-}
 func (h handler) Saveuser(c *gin.Context) {
-	uname := c.PostForm("uname")
-	pwd := c.PostForm("pwd")
+	var userData models.Saverequest
+	c.BindJSON(&userData)
+	uname := userData.Username
+	pwd := userData.Password
 	salt, err := utils.Createsalt()
 
 	if err != nil {

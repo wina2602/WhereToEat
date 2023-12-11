@@ -15,6 +15,10 @@ func ChooseDifferentUname() Err {
 	setMsg("Username already taken,Choose a differrent one")
 	return err
 }
+func ServerError() Err {
+	setMsg("Server connection failed.")
+	return err
+}
 func setMsg(msg string) {
 	err.Message = msg
 }

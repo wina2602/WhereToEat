@@ -1,11 +1,15 @@
 package handlers
 
-import "gorm.io/gorm"
+import (
+	"github.com/redis/go-redis/v9"
+	"gorm.io/gorm"
+)
 
 type handler struct {
-	DB *gorm.DB
+	DB  *gorm.DB
+	Rdb *redis.Client
 }
 
-func NewDb(db *gorm.DB) handler {
-	return handler{db}
+func Resources(db *gorm.DB, rdb *redis.Client) handler {
+	return handler{db, rdb}
 }

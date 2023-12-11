@@ -13,7 +13,7 @@ func Init() *gorm.DB {
 	db, err := gorm.Open(postgres.Open(dbURL), &gorm.Config{})
 
 	if err != nil {
-		log.Fatalln(err)
+		log.Fatalln("error connecting to DB..make sure the table is present")
 	}
 
 	return db
